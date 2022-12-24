@@ -1,0 +1,14 @@
+development:
+  clients:
+    default:
+      uri: <%= ENV['MONGO_PATH'] %>
+test:
+  clients:
+    default:
+      database: whitelabel_fantasy_league_test
+      hosts:
+        - localhost:27017
+      options:
+        read:
+          mode: :primary
+        max_pool_size: 1
