@@ -3,20 +3,24 @@ class FantasyLeaguesController < ApplicationController
 
   # GET /fantasy_leagues or /fantasy_leagues.json
   def index
+    @title_section = 'Fantasy Leagues'
     @fantasy_leagues = FantasyLeague.all
   end
 
   # GET /fantasy_leagues/1 or /fantasy_leagues/1.json
   def show
+    @title_section = 'Fantasy League'
   end
 
   # GET /fantasy_leagues/new
   def new
+    @title_section = 'Create Fantasy League'
     @fantasy_league = FantasyLeague.new
   end
 
   # GET /fantasy_leagues/1/edit
   def edit
+    @title_section = 'Edit Fantasy League'
   end
 
   # POST /fantasy_leagues or /fantasy_leagues.json
@@ -58,12 +62,11 @@ class FantasyLeaguesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+  
     def set_fantasy_league
       @fantasy_league = FantasyLeague.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def fantasy_league_params
       params.require(:fantasy_league).permit(:name, :status)
     end
