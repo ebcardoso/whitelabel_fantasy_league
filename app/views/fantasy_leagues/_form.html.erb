@@ -1,0 +1,44 @@
+<!-- if fantasy_league.errors.any? >
+    <div style="color: red">
+      <h2><= pluralize(fantasy_league.errors.count, "error") %> prohibited this fantasy_league from being saved:</h2>
+
+      <ul>
+        < fantasy_league.errors.each do |error| %>
+          <li><= error.full_message %></li>
+        < end %>
+      </ul>
+    </div>
+< end %-->
+
+<div class="row">
+  <!-- left column -->
+  <div class="col-md-12">
+    <!-- general form elements -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Fields</h3>
+      </div>
+      <!-- /.card-header -->
+      <!-- form start -->
+      <%= form_with(model: fantasy_league) do |form| %>
+        <div class="card-body">
+          <div class="form-group">
+            <%= form.label :name %>
+            <%= form.text_field :name, class:"form-control", id:"exampleInputName", placeholder:"Enter name" %>
+          </div>
+          <div class="form-check">
+            <%= form.check_box :status, class:"form-check-input", id:"exampleStatus" %>
+            <%= form.label :status, class:"form-check-label", for:"exampleStatus" %>
+          </div>
+        </div>
+        <!-- /.card-body -->
+
+        <div class="card-footer" align="right">
+          <%= form.submit class:"btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+    <!-- /.card -->
+  </div>
+</div>
+<!-- /.row -->
