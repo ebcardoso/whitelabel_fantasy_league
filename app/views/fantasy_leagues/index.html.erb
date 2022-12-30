@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">List of Fantasy Leagues</h3>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+        <div align="right">
+          <%= link_to "New League", new_fantasy_league_path, class:"btn btn-primary" %>
+        </div>
+
+        <br/>
+
+        <table id="example1" class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th><center>Name</center></th>
+              <th><center>Active?</center></th>
+              <th><center>Options</center></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @fantasy_leagues.each do |fantasy_league| %>
+              <tr>
+                <td><%= fantasy_league.name %></td>
+                <td><center><%= fantasy_league.status ? 'YES' : 'NO' %></center></td>
+                <td>
+                  <center>
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-default">Options</button>
+                      <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                        <span class="sr-only">Toggle Dropdown</span>
+                      </button>
+                      <div class="dropdown-menu" role="menu">
+                        <%= link_to "Show", fantasy_league, class:"dropdown-item" %>
+                        <%= link_to "Edit", edit_fantasy_league_path(fantasy_league), class:"dropdown-item" %>
+                        <%= button_to "Delete", fantasy_league, method: :delete, class:"dropdown-item" %>
+                      </div>
+                    </div>
+                  </center>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+  </div>
+  <!-- /.col -->
+</div>
+<!-- /.row -->
+
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
