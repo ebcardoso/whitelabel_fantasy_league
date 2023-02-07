@@ -50,7 +50,7 @@ class FantasyLeaguesController < ApplicationController
     def set_model
       @model = FantasyLeague.where(id: params[:id]).first
       if (@model.blank?)
-        redirect_to fantasy_leagues_url, alert: "Equipe não Encontrada."
+        redirect_to fantasy_leagues_url, alert: "Fantasy league not found."
       end
     end
 
