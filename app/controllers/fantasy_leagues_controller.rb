@@ -38,7 +38,7 @@ class FantasyLeaguesController < ApplicationController
   end
 
   def destroy
-    if @fantasy_league.destroy
+    if @model.destroy
       redirect_to fantasy_leagues_url, notice: "Fantasy league was successfully destroyed."
     else
       redirect_to fantasy_leagues_url, alert: "Error deleting the fantasy league."

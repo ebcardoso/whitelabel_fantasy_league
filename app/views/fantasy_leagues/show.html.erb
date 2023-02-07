@@ -10,13 +10,13 @@
       <div class="card-body">
         <dl>
           <dt>Id:</dt>
-          <dd><%= @fantasy_league.league_uuid %></dd>
+          <dd><%= @model.league_uuid %></dd>
           <dt>Name:</dt>
-          <dd><%= @fantasy_league.name %></dd>
+          <dd><%= @model.name %></dd>
           <dt>Active?:</dt>
-          <dd><%= @fantasy_league.status ? 'YES' : 'NO' %></dd>
+          <dd><%= @model.status ? 'YES' : 'NO' %></dd>
           <dt>Created at:</dt>
-          <dd><%= @fantasy_league.created_at.strftime('%d/%m/%Y') %></dd>
+          <dd><%= @model.created_at.strftime('%d/%m/%Y') %></dd>
         </dl>
       </div>
       <!-- /.card-body -->
