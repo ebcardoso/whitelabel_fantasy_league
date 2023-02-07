@@ -1,13 +1,11 @@
 class FantasyLeaguesController < ApplicationController
   before_action :set_model, only: %i[ show edit update destroy ]
 
-  # GET /fantasy_leagues or /fantasy_leagues.json
   def index
     @title_section = 'Fantasy Leagues'
     @fantasy_leagues = FantasyLeague.all
   end
 
-  # GET /fantasy_leagues/1 or /fantasy_leagues/1.json
   def show
     @title_section = 'Fantasy League'
   end
@@ -39,13 +37,11 @@ class FantasyLeaguesController < ApplicationController
     end
   end
 
-  # DELETE /fantasy_leagues/1 or /fantasy_leagues/1.json
   def destroy
-    @fantasy_league.destroy
-
-    respond_to do |format|
-      format.html { redirect_to fantasy_leagues_url, notice: "Fantasy league was successfully destroyed." }
-      format.json { head :no_content }
+    if @fantasy_league.destroy
+      redirect_to fantasy_leagues_url, notice: "Fantasy league was successfully destroyed."
+    else
+      redirect_to fantasy_leagues_url, alert: "Error deleting the fantasy league."
     end
   end
 
