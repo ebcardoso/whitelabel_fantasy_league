@@ -30,23 +30,30 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
               with font-awesome or any other icon font library -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>
-              Dashboard
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
+
+        <% unless sidebar_menus.nil? %>
+          <% sidebar_menus.each do |item| %>
             <li class="nav-item">
-              <%= link_to(root_path, class:'nav-link') do %>
-                <i class="far fa-circle nav-icon"></i>
-                <p>Dashboard v1</p>
-              <% end %>
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas <%=item[:icon]%>"></i>
+                <p>
+                  <%= item[:title] %>
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <% item[:menus].each do |menu| %>
+                  <li class="nav-item">
+                    <%= link_to(menu[:path], class:'nav-link') do %>
+                      <i class="far fa-circle nav-icon"></i>
+                      <p><%= menu[:title] %></p>
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
             </li>
-          </ul>
-        </li>
+          <% end %>
+        <% end %>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->
