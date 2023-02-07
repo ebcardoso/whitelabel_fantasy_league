@@ -13,6 +13,18 @@
 <div class="row">
   <!-- left column -->
   <div class="col-md-12">
+
+    <% if @model.errors.any? %>
+      <% @model.errors.each do |error| %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <%= error.options[:message] %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% end %>
+    <% end %>
+
     <!-- general form elements -->
     <div class="card">
       <div class="card-header">
@@ -20,7 +32,7 @@
       </div>
       <!-- /.card-header -->
       <!-- form start -->
-      <%= form_with(model: fantasy_league) do |form| %>
+      <%= form_with(model: model) do |form| %>
         <div class="card-body">
           <div class="form-group">
             <%= form.label :name %>

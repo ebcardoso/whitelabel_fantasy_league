@@ -6,6 +6,9 @@ class FantasyLeague
   field :name, type: String
   field :status, type: Mongoid::Boolean, default: true
 
+  #Validates Presence
+  validates :name, presence: {message: "Field Name é required"}
+
   before_create :set_league_uuid
 
   private
